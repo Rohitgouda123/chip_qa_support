@@ -159,6 +159,23 @@
     - command: "./chip-tool channel read current-channel 1 1"
       logs:
         - " "
+- testcase: "[TC-CHANNEL-5.7] Program Guide Verification"
+  commands:
+      - command: './chip-tool channel get-program-guide 1 1  --StartTime 0 --EndTime 3600 --RecordingFlag 0 --ChannelList "[{\"majorNumber\":6,\"minorNumber\":0,\"name\":\"ABC\",\"callSign\":\"KAAL\",\"affiliateCallSign\":\"KAAL\"}]" --PageToken "{\"limit\":20,\"after\":\"axcvbnm\",\"before\":\"oiugfxsdcfvbn\"}" --ExternalIDList "[]"'
+        logs:
+          - " "
+      - command: './chip-tool channel record-program progid-abc1 0 "[]" foo 1 1'
+        logs:
+          - " "
+      - command: './chip-tool channel get-program-guide 1 1  --StartTime 0 --EndTime 3600  --ChannelList "[{\"majorNumber\":6,\"minorNumber\":0,\"name\":\"ABC\",\"callSign\":\"KAAL\",\"affiliateCallSign\":\"KAAL\"}]" --PageToken "{\"limit\":20,\"after\":\"axcvbnm\",\"before\":\"oiugfxsdcfvbn\"}" --ExternalIDList "[]"'
+        logs:
+          - " "
+      - command: './chip-tool channel cancel-record-program progid-abc1 0 "[]" foo 1 1'
+        logs:
+          - " "
+      - command: './chip-tool channel get-program-guide 1 1  --StartTime 0 --EndTime 3600 --ChannelList "[{\"majorNumber\":6,\"minorNumber\":0,\"name\":\"ABC\",\"callSign\":\"KAAL\",\"affiliateCallSign\":\"KAAL\"}]" --PageToken "{\"limit\":20,\"after\":\"axcvbnm\",\"before\":\"oiugfxsdcfvbn\"}" --ExternalIDList "[]"'
+        logs:
+          - " "
 - testcase: "[TC-MEDIAPLAYBACK-6.1] Mandatory Media Playback Verification"
   commands:
     - command: "./chip-tool mediaplayback pause 1 3"
