@@ -3,7 +3,7 @@
     - command: "./chip-tool lowpower sleep 1 1"
       logs:
         - " "
-- testcase: "[TC-KEYPADINPUT-3.2] Location Keys Verification"
+- testcase: "[TC-KEYPADINPUT-3.2] Location Keys Verification"//
   commands:
     - command: "./chip-tool keypadinput send-key 10 1 1"
       logs:
